@@ -1,0 +1,4 @@
+C:\Users\Clay\Documents\GitHub\SeniorProject\UPKeyLogger\UPKeyLogger\bin\Release\UPKeyLogger.dll
+C:\Users\Clay\Documents\GitHub\SeniorProject\UPKeyLogger\UPKeyLogger\bin\Release\UPKeyLogger.pdb
+C:\Users\Clay\Documents\GitHub\SeniorProject\UPKeyLogger\UPKeyLogger\obj\Release\UPKeyLogger.dll
+C:\Users\Clay\Documents\GitHub\SeniorProject\UPKeyLogger\UPKeyLogger\obj\Release\UPKeyLogger.pdb

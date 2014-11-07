@@ -1,0 +1,7 @@
+C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\DataCollection\bin\Release\DataCollection.exe.config
+C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\DataCollection\bin\Release\DataCollection.exe
+C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\DataCollection\bin\Release\DataCollection.pdb
+C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\DataCollection\obj\Release\DataCollection.Properties.Resources.resources
+C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\DataCollection\obj\Release\DataCollection.csproj.GenerateResource.Cache
+C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\DataCollection\obj\Release\DataCollection.exe
+C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\DataCollection\obj\Release\DataCollection.pdb

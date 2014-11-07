@@ -1,0 +1,8 @@
+C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\DataCollection\bin\Debug\DataCollection.exe.config
+C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\DataCollection\obj\Debug\DataCollection.csprojResolveAssemblyReference.cache
+C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\DataCollection\obj\Debug\DataCollection.Properties.Resources.resources
+C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\DataCollection\obj\Debug\DataCollection.csproj.GenerateResource.Cache
+C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\DataCollection\bin\Debug\DataCollection.exe
+C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\DataCollection\bin\Debug\DataCollection.pdb
+C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\DataCollection\obj\Debug\DataCollection.exe
+C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\DataCollection\obj\Debug\DataCollection.pdb

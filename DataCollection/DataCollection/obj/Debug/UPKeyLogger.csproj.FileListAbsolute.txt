@@ -1,0 +1,5 @@
+C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\DataCollection\bin\Debug\UPKeyLogger.dll
+C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\DataCollection\bin\Debug\UPKeyLogger.pdb
+C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\DataCollection\obj\Debug\UPKeyLogger.csprojResolveAssemblyReference.cache
+C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\DataCollection\obj\Debug\UPKeyLogger.dll
+C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\DataCollection\obj\Debug\UPKeyLogger.pdb

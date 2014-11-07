@@ -1,0 +1,10 @@
+C:\Users\Clay\Documents\GitHub\SeniorProject\KeyLogger\KeyLogger\bin\Debug\KeyLogger.exe
+C:\Users\Clay\Documents\GitHub\SeniorProject\KeyLogger\KeyLogger\obj\x86\Debug\KeyLogger.csprojResolveAssemblyReference.cache
+C:\Users\Clay\Documents\GitHub\SeniorProject\KeyLogger\KeyLogger\obj\x86\Debug\KeyLogger.frmAbout.resources
+C:\Users\Clay\Documents\GitHub\SeniorProject\KeyLogger\KeyLogger\obj\x86\Debug\KeyLogger.FrmMain.resources
+C:\Users\Clay\Documents\GitHub\SeniorProject\KeyLogger\KeyLogger\obj\x86\Debug\KeyLogger.Frmoptions.resources
+C:\Users\Clay\Documents\GitHub\SeniorProject\KeyLogger\KeyLogger\obj\x86\Debug\KeyLogger.Properties.Resources.resources
+C:\Users\Clay\Documents\GitHub\SeniorProject\KeyLogger\KeyLogger\obj\x86\Debug\KeyLogger.csproj.GenerateResource.Cache
+C:\Users\Clay\Documents\GitHub\SeniorProject\KeyLogger\KeyLogger\obj\x86\Debug\KeyLogger.exe
+C:\Users\Clay\Documents\GitHub\SeniorProject\KeyLogger\KeyLogger\obj\x86\Debug\KeyLogger.pdb
+C:\Users\Clay\Documents\GitHub\SeniorProject\KeyLogger\KeyLogger\bin\Debug\KeyLogger.pdb
