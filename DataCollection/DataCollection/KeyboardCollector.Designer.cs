@@ -28,12 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.DataLstBox = new System.Windows.Forms.ListBox();
+            this.SuspendLayout();
+            // 
+            // DataLstBox
+            // 
+            this.DataLstBox.FormattingEnabled = true;
+            this.DataLstBox.Location = new System.Drawing.Point(3, 49);
+            this.DataLstBox.Name = "DataLstBox";
+            this.DataLstBox.Size = new System.Drawing.Size(232, 251);
+            this.DataLstBox.TabIndex = 0;
+            // 
+            // KeyboardCollector
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(341, 296);
+            this.Controls.Add(this.DataLstBox);
+            this.Name = "KeyboardCollector";
             this.Text = "Form1";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.ListBox DataLstBox;
     }
 }
 

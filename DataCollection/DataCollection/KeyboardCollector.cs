@@ -15,11 +15,13 @@ namespace DataCollection
     public partial class KeyboardCollector : Form
     {
         Intercepter inter;
+        LinkedList<String> strokes;
         public KeyboardCollector()
         {
             inter = new Intercepter(this);
-            inter.run();
+            inter.Start();
             InitializeComponent();
+            //DataLstBox.Items.;
         }
     }
 }

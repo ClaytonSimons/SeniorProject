@@ -6,3 +6,5 @@ C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\DataCollection\bin\D
 C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\DataCollection\bin\Debug\DataCollection.pdb
 C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\DataCollection\obj\Debug\DataCollection.exe
 C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\DataCollection\obj\Debug\DataCollection.pdb
+C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\DataCollection\bin\Debug\UPKeyLogger.dll
+C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\DataCollection\obj\Debug\DataCollection.KeyboardCollector.resources
