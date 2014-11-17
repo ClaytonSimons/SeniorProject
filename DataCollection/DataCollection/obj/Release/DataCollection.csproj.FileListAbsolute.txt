@@ -5,3 +5,5 @@ C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\DataCollection\obj\R
 C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\DataCollection\obj\Release\DataCollection.csproj.GenerateResource.Cache
 C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\DataCollection\obj\Release\DataCollection.exe
 C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\DataCollection\obj\Release\DataCollection.pdb
+C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\DataCollection\obj\Release\DataCollection.csprojResolveAssemblyReference.cache
+C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\DataCollection\obj\Release\DataCollection.KeyboardCollector.resources

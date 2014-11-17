@@ -8,3 +8,4 @@ C:\Users\Clay\Documents\GitHub\SeniorProject\KeyLogger\KeyLogger\obj\x86\Debug\K
 C:\Users\Clay\Documents\GitHub\SeniorProject\KeyLogger\KeyLogger\obj\x86\Debug\KeyLogger.exe
 C:\Users\Clay\Documents\GitHub\SeniorProject\KeyLogger\KeyLogger\obj\x86\Debug\KeyLogger.pdb
 C:\Users\Clay\Documents\GitHub\SeniorProject\KeyLogger\KeyLogger\bin\Debug\KeyLogger.pdb
+C:\Users\Clay\Documents\GitHub\SeniorProject\KeyLogger\KeyLogger\bin\Debug\KeyLogger.exe.config
