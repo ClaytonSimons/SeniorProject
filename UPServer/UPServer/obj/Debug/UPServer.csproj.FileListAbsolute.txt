@@ -1,0 +1,2 @@
+c:\users\clay\documents\visual studio 2013\Projects\UPServer\UPServer\bin\Debug\UPServer.exe.config
+C:\Users\Clay\Documents\GitHub\SeniorProject\UPServer\UPServer\bin\Debug\UPServer.exe.config
