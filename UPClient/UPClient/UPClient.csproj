@@ -46,9 +46,8 @@
   <ItemGroup>
     <Compile Include="Client.cs" />
     <Compile Include="ClientConnectionManager.cs" />
-    <Compile Include="Intercepter.cs" />
-    <Compile Include="KeyBoardHook.cs" />
-    <Compile Include="Keylogger.cs" />
+    <Compile Include="KeyEntry.cs" />
+    <Compile Include="KeyLogger.cs" />
     <Compile Include="loginWnd.cs">
       <SubType>Form</SubType>
     </Compile>

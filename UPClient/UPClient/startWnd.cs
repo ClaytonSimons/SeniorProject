@@ -12,23 +12,25 @@ namespace UPClient
 {
     public partial class startWnd : Form
     {
-        loginWnd login = new loginWnd();
-        registrationWnd registration = new registrationWnd();
+        runningWnd running;
+        loginWnd login;
         public startWnd()
         {
             InitializeComponent();
+            login = new loginWnd();
+            running = new runningWnd();
         }
 
         private void startBtn_Click(object sender, EventArgs e)
         {
             if(predictionRadBtn.Checked)
             {
-                login.Show();
+                running.Show();
                 Hide();
             }
             else if(learningRadBtn.Checked)
             {
-                registration.Show();
+                login.Show();
                 Hide();
             }
         }

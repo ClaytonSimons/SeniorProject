@@ -11,3 +11,15 @@ C:\Users\Clay\Documents\GitHub\SeniorProject\UPClient\UPClient\bin\Debug\UPClien
 C:\Users\Clay\Documents\GitHub\SeniorProject\UPClient\UPClient\bin\Debug\UPClient.pdb
 C:\Users\Clay\Documents\GitHub\SeniorProject\UPClient\UPClient\obj\Debug\UPClient.exe
 C:\Users\Clay\Documents\GitHub\SeniorProject\UPClient\UPClient\obj\Debug\UPClient.pdb
+G:\SeniorProject\UPClient\UPClient\bin\Debug\UPClient.exe.config
+G:\SeniorProject\UPClient\UPClient\obj\Debug\UPClient.exe
+G:\SeniorProject\UPClient\UPClient\obj\Debug\UPClient.pdb
+G:\SeniorProject\UPClient\UPClient\bin\Debug\UPClient.exe
+G:\SeniorProject\UPClient\UPClient\bin\Debug\UPClient.pdb
+G:\SeniorProject\UPClient\UPClient\obj\Debug\UPClient.csprojResolveAssemblyReference.cache
+G:\SeniorProject\UPClient\UPClient\obj\Debug\UPClient.loginWnd.resources
+G:\SeniorProject\UPClient\UPClient\obj\Debug\UPClient.registrationWnd.resources
+G:\SeniorProject\UPClient\UPClient\obj\Debug\UPClient.runningWnd.resources
+G:\SeniorProject\UPClient\UPClient\obj\Debug\UPClient.startWnd.resources
+G:\SeniorProject\UPClient\UPClient\obj\Debug\UPClient.Properties.Resources.resources
+G:\SeniorProject\UPClient\UPClient\obj\Debug\UPClient.csproj.GenerateResource.Cache

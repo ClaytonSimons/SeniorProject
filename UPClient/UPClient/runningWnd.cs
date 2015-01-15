@@ -16,6 +16,9 @@ namespace UPClient
         public runningWnd()
         {
             InitializeComponent();
+            //Need to retrieve serverAddress from an external txt file or something.
+            client = new Client("localhost", this);
+            client.Start();
         }
         public void updateError(String msg)
         {
@@ -28,6 +31,7 @@ namespace UPClient
 
         private void Closed(object sender, FormClosedEventArgs e)
         {
+            client.Stop();
             Application.Exit();
         }
     }

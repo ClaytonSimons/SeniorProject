@@ -21,5 +21,10 @@ namespace UPClient
         {
             Application.Exit();
         }
+
+        private void submitBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
