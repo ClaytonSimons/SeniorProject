@@ -17,19 +17,19 @@ namespace UPClient
         public startWnd()
         {
             InitializeComponent();
-            login = new loginWnd();
-            running = new runningWnd();
         }
 
         private void startBtn_Click(object sender, EventArgs e)
         {
             if(predictionRadBtn.Checked)
             {
+                running = new runningWnd(this);
                 running.Show();
                 Hide();
             }
             else if(learningRadBtn.Checked)
             {
+                login = new loginWnd(this);
                 login.Show();
                 Hide();
             }

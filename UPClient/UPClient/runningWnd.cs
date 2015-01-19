@@ -12,13 +12,14 @@ namespace UPClient
 {
     public partial class runningWnd : Form
     {
-        Client client;
-        public runningWnd()
+        public Client client;
+        private startWnd parent;
+        public runningWnd(startWnd p)
         {
             InitializeComponent();
+            parent = p;
             //Need to retrieve serverAddress from an external txt file or something.
             client = new Client("localhost", this);
-            client.Start();
         }
         public void updateError(String msg)
         {
@@ -29,10 +30,16 @@ namespace UPClient
             errorTxt.Text = "";
         }
 
-        private void Closed(object sender, FormClosedEventArgs e)
+        private void HasClosed(object sender, FormClosedEventArgs e)
         {
             client.Stop();
-            Application.Exit();
+            parent.Show();
+        }
+        private void stopBtn_Click(object sender, EventArgs e)
+        {
+            client.Stop();
+            parent.Show();
+            Close();
         }
     }
 }

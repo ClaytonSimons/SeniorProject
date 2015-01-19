@@ -1,0 +1,12 @@
+C:\Users\Clay\Documents\GitHub\SeniorProject\UPClient\UPClient\bin\Release\UPClient.exe.config
+C:\Users\Clay\Documents\GitHub\SeniorProject\UPClient\UPClient\bin\Release\UPClient.exe
+C:\Users\Clay\Documents\GitHub\SeniorProject\UPClient\UPClient\bin\Release\UPClient.pdb
+C:\Users\Clay\Documents\GitHub\SeniorProject\UPClient\UPClient\obj\Release\UPClient.loginWnd.resources
+C:\Users\Clay\Documents\GitHub\SeniorProject\UPClient\UPClient\obj\Release\UPClient.registrationWnd.resources
+C:\Users\Clay\Documents\GitHub\SeniorProject\UPClient\UPClient\obj\Release\UPClient.runningWnd.resources
+C:\Users\Clay\Documents\GitHub\SeniorProject\UPClient\UPClient\obj\Release\UPClient.startWnd.resources
+C:\Users\Clay\Documents\GitHub\SeniorProject\UPClient\UPClient\obj\Release\UPClient.Properties.Resources.resources
+C:\Users\Clay\Documents\GitHub\SeniorProject\UPClient\UPClient\obj\Release\UPClient.csproj.GenerateResource.Cache
+C:\Users\Clay\Documents\GitHub\SeniorProject\UPClient\UPClient\obj\Release\UPClient.exe
+C:\Users\Clay\Documents\GitHub\SeniorProject\UPClient\UPClient\obj\Release\UPClient.pdb
+C:\Users\Clay\Documents\GitHub\SeniorProject\UPClient\UPClient\obj\Release\UPClient.csprojResolveAssemblyReference.cache

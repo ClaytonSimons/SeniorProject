@@ -6,14 +6,17 @@ using System.Threading.Tasks;
 
 namespace UPClient
 {
-    class KeyEntry
+    [Serializable]
+    public class KeyEntry
     {
         byte keyValue;
         int time;
-        public KeyEntry(byte key, int t)
+        string keyboardType;
+        public KeyEntry(byte key, int t, string type)
         {
             keyValue = key;
             time = t;
+            keyboardType = type;
         }
     }
 }

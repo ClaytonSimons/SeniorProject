@@ -1,2 +1,10 @@
 c:\users\clay\documents\visual studio 2013\Projects\UPServer\UPServer\bin\Debug\UPServer.exe.config
 C:\Users\Clay\Documents\GitHub\SeniorProject\UPServer\UPServer\bin\Debug\UPServer.exe.config
+C:\Users\Clay\Documents\GitHub\SeniorProject\UPServer\UPServer\obj\Debug\UPServer.csprojResolveAssemblyReference.cache
+C:\Users\Clay\Documents\GitHub\SeniorProject\UPServer\UPServer\obj\Debug\UPServer.UI.resources
+C:\Users\Clay\Documents\GitHub\SeniorProject\UPServer\UPServer\obj\Debug\UPServer.Properties.Resources.resources
+C:\Users\Clay\Documents\GitHub\SeniorProject\UPServer\UPServer\obj\Debug\UPServer.csproj.GenerateResource.Cache
+C:\Users\Clay\Documents\GitHub\SeniorProject\UPServer\UPServer\bin\Debug\UPServer.exe
+C:\Users\Clay\Documents\GitHub\SeniorProject\UPServer\UPServer\bin\Debug\UPServer.pdb
+C:\Users\Clay\Documents\GitHub\SeniorProject\UPServer\UPServer\obj\Debug\UPServer.exe
+C:\Users\Clay\Documents\GitHub\SeniorProject\UPServer\UPServer\obj\Debug\UPServer.pdb

@@ -34,6 +34,7 @@
             this.usernameRTxt = new System.Windows.Forms.RichTextBox();
             this.submitBtn = new System.Windows.Forms.Button();
             this.errorTxt = new System.Windows.Forms.TextBox();
+            this.registrationBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // passwordTxt
@@ -92,11 +93,22 @@
             this.errorTxt.Size = new System.Drawing.Size(100, 13);
             this.errorTxt.TabIndex = 11;
             // 
+            // registrationBtn
+            // 
+            this.registrationBtn.Location = new System.Drawing.Point(265, 29);
+            this.registrationBtn.Name = "registrationBtn";
+            this.registrationBtn.Size = new System.Drawing.Size(75, 23);
+            this.registrationBtn.TabIndex = 12;
+            this.registrationBtn.Text = "Register";
+            this.registrationBtn.UseVisualStyleBackColor = true;
+            this.registrationBtn.Click += new System.EventHandler(this.registrationBtn_Click);
+            // 
             // loginWnd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(360, 132);
+            this.Controls.Add(this.registrationBtn);
             this.Controls.Add(this.errorTxt);
             this.Controls.Add(this.submitBtn);
             this.Controls.Add(this.passwordTxt);
@@ -105,7 +117,7 @@
             this.Controls.Add(this.usernameRTxt);
             this.Name = "loginWnd";
             this.Text = "User Prediction - Login";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Closed);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HasClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -119,5 +131,6 @@
         private System.Windows.Forms.RichTextBox usernameRTxt;
         private System.Windows.Forms.Button submitBtn;
         private System.Windows.Forms.TextBox errorTxt;
+        private System.Windows.Forms.Button registrationBtn;
     }
 }

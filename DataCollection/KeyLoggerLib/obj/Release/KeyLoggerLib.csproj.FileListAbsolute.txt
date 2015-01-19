@@ -1,5 +1,0 @@
-C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\KeyLoggerLib\obj\Release\KeyLoggerLib.csprojResolveAssemblyReference.cache
-C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\KeyLoggerLib\bin\Release\KeyLoggerLib.dll
-C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\KeyLoggerLib\bin\Release\KeyLoggerLib.pdb
-C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\KeyLoggerLib\obj\Release\KeyLoggerLib.dll
-C:\Users\Clay\Documents\GitHub\SeniorProject\DataCollection\KeyLoggerLib\obj\Release\KeyLoggerLib.pdb

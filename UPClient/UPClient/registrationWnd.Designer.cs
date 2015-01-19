@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.submitBtn = new System.Windows.Forms.Button();
             this.usernameRTxt = new System.Windows.Forms.RichTextBox();
             this.passwordRTxt = new System.Windows.Forms.RichTextBox();
             this.passwordRTxt2 = new System.Windows.Forms.RichTextBox();
@@ -37,14 +37,15 @@
             this.passwordTxt2 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // button1
+            // submitBtn
             // 
-            this.button1.Location = new System.Drawing.Point(306, 154);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.submitBtn.Location = new System.Drawing.Point(306, 154);
+            this.submitBtn.Name = "submitBtn";
+            this.submitBtn.Size = new System.Drawing.Size(75, 23);
+            this.submitBtn.TabIndex = 0;
+            this.submitBtn.Text = "Submit";
+            this.submitBtn.UseVisualStyleBackColor = true;
+            this.submitBtn.Click += new System.EventHandler(this.submitBtn_Click);
             // 
             // usernameRTxt
             // 
@@ -111,10 +112,10 @@
             this.Controls.Add(this.passwordRTxt2);
             this.Controls.Add(this.passwordRTxt);
             this.Controls.Add(this.usernameRTxt);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.submitBtn);
             this.Name = "registrationWnd";
             this.Text = "User Predictor - Registration";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Closed);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HasClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -122,7 +123,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button submitBtn;
         private System.Windows.Forms.RichTextBox usernameRTxt;
         private System.Windows.Forms.RichTextBox passwordRTxt;
         private System.Windows.Forms.RichTextBox passwordRTxt2;

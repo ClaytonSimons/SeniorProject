@@ -40,6 +40,7 @@
             this.stopBtn.TabIndex = 0;
             this.stopBtn.Text = "Stop";
             this.stopBtn.UseVisualStyleBackColor = true;
+            this.stopBtn.Click += new System.EventHandler(this.stopBtn_Click);
             // 
             // errorTxt
             // 
@@ -60,7 +61,7 @@
             this.Controls.Add(this.stopBtn);
             this.Name = "runningWnd";
             this.Text = "User Predictor - Running";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Closed);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HasClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

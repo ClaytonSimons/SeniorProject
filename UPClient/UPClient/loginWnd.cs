@@ -12,19 +12,40 @@ namespace UPClient
 {
     public partial class loginWnd : Form
     {
-        public loginWnd()
+        startWnd parent;
+        runningWnd running;
+        registrationWnd registration;
+        public loginWnd(startWnd p)
         {
             InitializeComponent();
+            parent = p;
         }
 
-        private void Closed(object sender, FormClosedEventArgs e)
+        private void HasClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            parent.Show();
         }
 
         private void submitBtn_Click(object sender, EventArgs e)
         {
+            if(running == null)
+                running = new runningWnd(parent);
+            if (running.client.Login(usernameRTxt.Text, passwordRTxt.Text))
+            {
+                running.Show();
+                Hide();
+            }
+            else
+            {
+                //ask for resubmission with new username
+            }
+        }
 
+        private void registrationBtn_Click(object sender, EventArgs e)
+        {
+            registration = new registrationWnd(parent);
+            registration.Show();
+            Close();
         }
     }
 }
