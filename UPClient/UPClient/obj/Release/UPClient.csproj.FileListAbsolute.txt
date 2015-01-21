@@ -1,6 +1,7 @@
 C:\Users\Clay\Documents\GitHub\SeniorProject\UPClient\UPClient\bin\Release\UPClient.exe.config
 C:\Users\Clay\Documents\GitHub\SeniorProject\UPClient\UPClient\bin\Release\UPClient.exe
 C:\Users\Clay\Documents\GitHub\SeniorProject\UPClient\UPClient\bin\Release\UPClient.pdb
+C:\Users\Clay\Documents\GitHub\SeniorProject\UPClient\UPClient\obj\Release\UPClient.csprojResolveAssemblyReference.cache
 C:\Users\Clay\Documents\GitHub\SeniorProject\UPClient\UPClient\obj\Release\UPClient.loginWnd.resources
 C:\Users\Clay\Documents\GitHub\SeniorProject\UPClient\UPClient\obj\Release\UPClient.registrationWnd.resources
 C:\Users\Clay\Documents\GitHub\SeniorProject\UPClient\UPClient\obj\Release\UPClient.runningWnd.resources
@@ -9,4 +10,5 @@ C:\Users\Clay\Documents\GitHub\SeniorProject\UPClient\UPClient\obj\Release\UPCli
 C:\Users\Clay\Documents\GitHub\SeniorProject\UPClient\UPClient\obj\Release\UPClient.csproj.GenerateResource.Cache
 C:\Users\Clay\Documents\GitHub\SeniorProject\UPClient\UPClient\obj\Release\UPClient.exe
 C:\Users\Clay\Documents\GitHub\SeniorProject\UPClient\UPClient\obj\Release\UPClient.pdb
-C:\Users\Clay\Documents\GitHub\SeniorProject\UPClient\UPClient\obj\Release\UPClient.csprojResolveAssemblyReference.cache
+C:\Users\Clay\Documents\GitHub\SeniorProject\UPClient\UPClient\bin\Release\KeyEntry.dll
+C:\Users\Clay\Documents\GitHub\SeniorProject\UPClient\UPClient\bin\Release\KeyEntry.pdb

@@ -16,6 +16,7 @@ namespace UPServer
         public UI()
         {
             InitializeComponent();
+            proctor = new Proctor();
         }
     }
 }

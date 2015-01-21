@@ -8,6 +8,7 @@ using System.IO;
 using System.Net.Sockets;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using KeyData;
 
 namespace UPServer
 {
@@ -19,21 +20,34 @@ namespace UPServer
         Proctor proctor;
         NetworkStream networkStream;
         StreamReader streamReader;
-        Thread runThread;
         int userID;
         String userName;
-        public UserClient()
+        TcpClient client;
+        bool connected;
+        public UserClient(TcpClient c)
         {
-
+            client = c;
+            networkStream = client.GetStream();
+            streamReader = new StreamReader(networkStream);
+            Thread dataThread = new Thread(new ThreadStart(DataLoop));
+            dataThread.Start();
+            Thread readThread = new Thread(new ThreadStart(ReadLoop));
+            readThread.Start();
         }
-        public void Disconnect(UserClient client)
+        public void Disconnect()
         {
-
+            connected = false;
+            streamReader.Close();
+            networkStream.Close();
+            client.Close();
         }
         public void DataLoop()
         {
-            IFormatter formatter = new BinaryFormatter();
-            KeyEntry entry = (KeyEntry)formatter.Deserialize(networkStream);
+            while (connected)
+            {
+                IFormatter formatter = new BinaryFormatter();
+                List<KeyEntry> entry = (List<KeyEntry>)formatter.Deserialize(networkStream);
+            }
         }
         public void ReadLoop()
         {

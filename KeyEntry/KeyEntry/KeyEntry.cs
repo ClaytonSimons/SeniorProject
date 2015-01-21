@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UPClient
+namespace KeyData
 {
-    [Serializable]
+    [Serializable()]
     public class KeyEntry
     {
-        byte keyValue;
-        int time;
-        string keyboardType;
+        public byte keyValue;
+        public int time;
+        public string keyboardType;
         public KeyEntry(byte key, int t, string type)
         {
             keyValue = key;

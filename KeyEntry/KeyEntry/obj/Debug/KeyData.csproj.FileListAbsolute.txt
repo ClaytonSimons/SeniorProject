@@ -1,0 +1,5 @@
+C:\Users\Clay\Documents\GitHub\SeniorProject\KeyEntry\KeyEntry\bin\Debug\KeyEntry.dll
+C:\Users\Clay\Documents\GitHub\SeniorProject\KeyEntry\KeyEntry\bin\Debug\KeyEntry.pdb
+C:\Users\Clay\Documents\GitHub\SeniorProject\KeyEntry\KeyEntry\obj\Debug\KeyData.csprojResolveAssemblyReference.cache
+C:\Users\Clay\Documents\GitHub\SeniorProject\KeyEntry\KeyEntry\obj\Debug\KeyEntry.dll
+C:\Users\Clay\Documents\GitHub\SeniorProject\KeyEntry\KeyEntry\obj\Debug\KeyEntry.pdb

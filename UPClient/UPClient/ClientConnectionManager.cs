@@ -10,6 +10,7 @@ using System.Net.Sockets;
 using System.Diagnostics;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using KeyData;
 
 namespace UPClient
 {
@@ -22,7 +23,7 @@ namespace UPClient
         bool connected;
         public ClientConnectionManager(String ServerAddress)
         {
-            serverAddress = ServerAddress;
+            serverAddress = ServerAddress == "localhost" ? "127.0.0.1" : ServerAddress;
             connected = false;
         }
         public bool CheckCredentials(String UserName, String Password)
@@ -55,7 +56,12 @@ namespace UPClient
             if (connected)
             {
                 IFormatter formatter = new BinaryFormatter();
-                formatter.Serialize(networkStream, Data);
+                List<KeyEntry> listtest = new List<KeyEntry>();
+                KeyEntry test = new KeyEntry(new Byte(), 123, "test Type");
+                listtest.Add(test);
+                listtest.Add(test);
+                listtest.Add(test);
+                formatter.Serialize(networkStream, listtest);
             }
             else
                 success = false;

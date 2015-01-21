@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
+using KeyData;
 
 namespace UPClient
 {
@@ -19,6 +20,8 @@ namespace UPClient
             keyLogger = new KeyLogger();
             connection = new ClientConnectionManager(serverAddress);
             UI = parent;
+            connection.Connect();
+            connection.SendData("username","pass",new List<KeyEntry>());
         }
         public bool Login(String UserName, String Password)
         {
@@ -41,6 +44,7 @@ namespace UPClient
         {
             if(keyLogger.IsActive)
                 keyLogger.Stop();
+            connection.Disconnect();
         }
     }
 }

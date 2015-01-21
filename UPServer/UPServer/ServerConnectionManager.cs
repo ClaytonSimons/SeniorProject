@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Net.Sockets;
+using System.Net;
 using System.IO;
 
 namespace UPServer
@@ -18,13 +20,16 @@ namespace UPServer
         NetworkStream networkStream;
         StreamReader reader;
         StreamWriter writer;
+        TcpListener server;
         public ServerConnectionManager()
         {
-
+            server = new TcpListener(1711);
+            Thread runThread = new Thread(new ThreadStart(Run));
+            runThread.Start();
         }
         public void DisconnectClient(UserClient client)
         {
-
+            client.Disconnect();
         }
         public List<UserClient> GetClients()
         {
@@ -36,7 +41,20 @@ namespace UPServer
         }
         public void Run()
         {
-
+            try
+            {
+                server.Start();
+                connected = true;
+                while(connected)
+                {
+                    UserClient client = new UserClient(server.AcceptTcpClient());
+                    clients.Add(client);
+                }
+            }
+            catch(Exception e)
+            {
+                
+            }
         }
         public void SetLearning(UserClient client, String Name, int ID)
         {

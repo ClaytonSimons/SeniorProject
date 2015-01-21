@@ -1,0 +1,4 @@
+C:\Users\Clay\Documents\GitHub\SeniorProject\KeyEntry\KeyEntry\bin\Release\KeyEntry.dll
+C:\Users\Clay\Documents\GitHub\SeniorProject\KeyEntry\KeyEntry\bin\Release\KeyEntry.pdb
+C:\Users\Clay\Documents\GitHub\SeniorProject\KeyEntry\KeyEntry\obj\Release\KeyEntry.dll
+C:\Users\Clay\Documents\GitHub\SeniorProject\KeyEntry\KeyEntry\obj\Release\KeyEntry.pdb
