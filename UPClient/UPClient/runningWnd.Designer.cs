@@ -1,6 +1,6 @@
 ﻿namespace UPClient
 {
-    partial class runningWnd
+    partial class RunningWnd
     {
         /// <summary>
         /// Required designer variable.

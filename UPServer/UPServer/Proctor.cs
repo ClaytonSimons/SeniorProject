@@ -12,8 +12,16 @@ namespace UPServer
         private UserData database;
         public Proctor()
         {
-            connection = new ServerConnectionManager();
+            connection = new ServerConnectionManager(this);
             database = new UserData();
+        }
+        public void SaveData(UserClient client, List<KeyData.KeyEntry> data)
+        {
+            bool GotHere = true;
+        }
+        public ServerConnectionManager GetConnection()
+        {
+            return connection;
         }
     }
 }

@@ -24,9 +24,10 @@ namespace UPServer
         String userName;
         TcpClient client;
         bool connected;
-        public UserClient(TcpClient c)
+        public UserClient(TcpClient c,Proctor p)
         {
             client = c;
+            proctor = p;
             networkStream = client.GetStream();
             streamReader = new StreamReader(networkStream);
             Thread dataThread = new Thread(new ThreadStart(DataLoop));
@@ -43,10 +44,11 @@ namespace UPServer
         }
         public void DataLoop()
         {
-            while (connected)
+            while (client.Connected)
             {
                 IFormatter formatter = new BinaryFormatter();
                 List<KeyEntry> entry = (List<KeyEntry>)formatter.Deserialize(networkStream);
+                proctor.SaveData(this,entry);
             }
         }
         public void ReadLoop()

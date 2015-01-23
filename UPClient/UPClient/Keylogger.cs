@@ -53,7 +53,7 @@ namespace UPClient
     /// </summary>
     public class KeyLogger
     {
-        List<KeyEntry> keyData;
+        List<KeyEntry> keyData = new List<KeyEntry>();
         /// <summary>
         /// The keyboard type string for keyentries.
         /// </summary>
@@ -569,6 +569,10 @@ namespace UPClient
         private void KeyDownLog(object sender, KeyEventArgs e)
         {
 
+        }
+        public List<KeyEntry> GetData()
+        {
+            return keyData;
         }
     }
 }

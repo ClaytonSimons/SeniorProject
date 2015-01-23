@@ -1,6 +1,6 @@
 ﻿namespace UPClient
 {
-    partial class registrationWnd
+    partial class RegistrationWnd
     {
         /// <summary>
         /// Required designer variable.

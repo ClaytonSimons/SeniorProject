@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace UPClient
 {
-    public partial class registrationWnd : Form
+    public partial class RegistrationWnd : Form
     {
-        startWnd parent;
-        runningWnd running;
-        public registrationWnd(startWnd p)
+        StartWnd parent;
+        RunningWnd running;
+        public RegistrationWnd(StartWnd p)
         {
             InitializeComponent();
             parent = p;
@@ -28,7 +28,7 @@ namespace UPClient
         private void submitBtn_Click(object sender, EventArgs e)
         {
             if (running == null)
-                running = new runningWnd(parent);
+                running = new RunningWnd(parent);
             if (running.client.Register(usernameRTxt.Text, passwordRTxt.Text))
             {
                 running.Show();

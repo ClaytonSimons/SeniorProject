@@ -69,43 +69,43 @@
     <Compile Include="Client.cs" />
     <Compile Include="ClientConnectionManager.cs" />
     <Compile Include="KeyLogger.cs" />
-    <Compile Include="loginWnd.cs">
+    <Compile Include="LoginWnd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="loginWnd.Designer.cs">
-      <DependentUpon>loginWnd.cs</DependentUpon>
+    <Compile Include="LoginWnd.Designer.cs">
+      <DependentUpon>LoginWnd.cs</DependentUpon>
     </Compile>
-    <Compile Include="registrationWnd.cs">
+    <Compile Include="RegistrationWnd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="registrationWnd.Designer.cs">
-      <DependentUpon>registrationWnd.cs</DependentUpon>
+    <Compile Include="RegistrationWnd.Designer.cs">
+      <DependentUpon>RegistrationWnd.cs</DependentUpon>
     </Compile>
-    <Compile Include="runningWnd.cs">
+    <Compile Include="RunningWnd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="runningWnd.Designer.cs">
-      <DependentUpon>runningWnd.cs</DependentUpon>
+    <Compile Include="RunningWnd.Designer.cs">
+      <DependentUpon>RunningWnd.cs</DependentUpon>
     </Compile>
-    <Compile Include="startWnd.cs">
+    <Compile Include="StartWnd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="startWnd.Designer.cs">
-      <DependentUpon>startWnd.cs</DependentUpon>
+    <Compile Include="StartWnd.Designer.cs">
+      <DependentUpon>StartWnd.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="loginWnd.resx">
-      <DependentUpon>loginWnd.cs</DependentUpon>
+    <EmbeddedResource Include="LoginWnd.resx">
+      <DependentUpon>LoginWnd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="registrationWnd.resx">
-      <DependentUpon>registrationWnd.cs</DependentUpon>
+    <EmbeddedResource Include="RegistrationWnd.resx">
+      <DependentUpon>RegistrationWnd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="runningWnd.resx">
-      <DependentUpon>runningWnd.cs</DependentUpon>
+    <EmbeddedResource Include="RunningWnd.resx">
+      <DependentUpon>RunningWnd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="startWnd.resx">
-      <DependentUpon>startWnd.cs</DependentUpon>
+    <EmbeddedResource Include="StartWnd.resx">
+      <DependentUpon>StartWnd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

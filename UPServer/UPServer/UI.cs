@@ -13,10 +13,47 @@ namespace UPServer
     public partial class UI : Form
     {
         Proctor proctor;
+        AllUsersWnd allWnd;
+        ActiveClientsWnd activeWnd;
         public UI()
         {
             InitializeComponent();
+        
+            
+            
+            
             proctor = new Proctor();
+        }
+
+        private void UI_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void activeClientsBtn_Click(object sender, EventArgs e)
+        {
+            if (allWnd == null)
+                allWnd = new AllUsersWnd();
+            allWnd.Show();
+        }
+
+        private void usersBtn_Click(object sender, EventArgs e)
+        {
+            if (activeWnd == null)
+                activeWnd = new ActiveClientsWnd();
+            activeWnd.Show();
+        }
+
+        private void Closed(object sender, FormClosedEventArgs e)
+        {
+            proctor.GetConnection().Stop();
+
+
+
+
+
+
+
         }
     }
 }

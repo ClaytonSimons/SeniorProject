@@ -16,7 +16,7 @@ namespace UPClient
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new startWnd());
+            Application.Run(new StartWnd());
         }
     }
 }

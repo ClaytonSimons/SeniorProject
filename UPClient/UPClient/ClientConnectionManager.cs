@@ -20,11 +20,9 @@ namespace UPClient
         NetworkStream networkStream;
         StreamWriter serverWriter;
         StreamReader serverReader;
-        bool connected;
         public ClientConnectionManager(String ServerAddress)
         {
             serverAddress = ServerAddress == "localhost" ? "127.0.0.1" : ServerAddress;
-            connected = false;
         }
         public bool CheckCredentials(String UserName, String Password)
         {
@@ -33,7 +31,7 @@ namespace UPClient
         private void ReadLoop()
         {
             String msg;
-            while(connected)
+            while(Connected)
             {
                 try
                 {
@@ -50,18 +48,18 @@ namespace UPClient
                 }
             }
         }
-        public bool SendData(String UserName, String Password, List<KeyEntry> Data)
+        public bool SendData(List<KeyEntry> Data)
         {
             bool success = true;
-            if (connected)
+            if (Connected)
             {
                 IFormatter formatter = new BinaryFormatter();
                 List<KeyEntry> listtest = new List<KeyEntry>();
-                KeyEntry test = new KeyEntry(new Byte(), 123, "test Type");
-                listtest.Add(test);
-                listtest.Add(test);
-                listtest.Add(test);
-                formatter.Serialize(networkStream, listtest);
+                //KeyEntry test = new KeyEntry(new Byte(), 123, "test Type");
+                //listtest.Add(test);
+                //listtest.Add(test);
+                //listtest.Add(test);
+                formatter.Serialize(networkStream, Data);
             }
             else
                 success = false;
@@ -77,13 +75,11 @@ namespace UPClient
             networkStream = GetStream();
             serverWriter = new StreamWriter(networkStream);
             serverReader = new StreamReader(networkStream);
-            connected = true;
             Thread readThread = new Thread(new ThreadStart(ReadLoop));
             readThread.Start();
         }
         public void Disconnect()
         {
-            connected = false;
             networkStream.Close();
             Close();
         }

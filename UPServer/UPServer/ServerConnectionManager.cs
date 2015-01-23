@@ -12,7 +12,7 @@ namespace UPServer
 {
     public class ServerConnectionManager
     {
-        private List<UserClient> clients;
+        private List<UserClient> clients = new List<UserClient>();
         bool connected;
         List<UserClient> learningClients;
         Proctor proctor;
@@ -21,10 +21,12 @@ namespace UPServer
         StreamReader reader;
         StreamWriter writer;
         TcpListener server;
-        public ServerConnectionManager()
+        Thread runThread;
+        public ServerConnectionManager(Proctor p)
         {
+            proctor = p;
             server = new TcpListener(1711);
-            Thread runThread = new Thread(new ThreadStart(Run));
+            runThread = new Thread(new ThreadStart(Run));
             runThread.Start();
         }
         public void DisconnectClient(UserClient client)
@@ -47,7 +49,7 @@ namespace UPServer
                 connected = true;
                 while(connected)
                 {
-                    UserClient client = new UserClient(server.AcceptTcpClient());
+                    UserClient client = new UserClient(server.AcceptTcpClient(),proctor);
                     clients.Add(client);
                 }
             }
@@ -55,6 +57,11 @@ namespace UPServer
             {
                 
             }
+        }
+        public void Stop()
+        {
+            connected = false;
+            server.Stop();
         }
         public void SetLearning(UserClient client, String Name, int ID)
         {

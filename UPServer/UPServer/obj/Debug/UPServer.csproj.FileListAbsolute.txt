@@ -10,3 +10,5 @@ C:\Users\Clay\Documents\GitHub\SeniorProject\UPServer\UPServer\obj\Debug\UPServe
 C:\Users\Clay\Documents\GitHub\SeniorProject\UPServer\UPServer\obj\Debug\UPServer.pdb
 C:\Users\Clay\Documents\GitHub\SeniorProject\UPServer\UPServer\bin\Debug\KeyEntry.dll
 C:\Users\Clay\Documents\GitHub\SeniorProject\UPServer\UPServer\bin\Debug\KeyEntry.pdb
+C:\Users\Clay\Documents\GitHub\SeniorProject\UPServer\UPServer\obj\Debug\UPServer.ActiveClientsWnd.resources
+C:\Users\Clay\Documents\GitHub\SeniorProject\UPServer\UPServer\obj\Debug\UPServer.AllUsersWnd.resources

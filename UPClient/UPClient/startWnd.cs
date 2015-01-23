@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace UPClient
 {
-    public partial class startWnd : Form
+    public partial class StartWnd : Form
     {
-        runningWnd running;
-        loginWnd login;
-        public startWnd()
+        RunningWnd running;
+        LoginWnd login;
+        public StartWnd()
         {
             InitializeComponent();
         }
@@ -23,13 +23,13 @@ namespace UPClient
         {
             if(predictionRadBtn.Checked)
             {
-                running = new runningWnd(this);
+                running = new RunningWnd(this);
                 running.Show();
                 Hide();
             }
             else if(learningRadBtn.Checked)
             {
-                login = new loginWnd(this);
+                login = new LoginWnd(this);
                 login.Show();
                 Hide();
             }
