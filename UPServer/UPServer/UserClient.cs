@@ -53,7 +53,17 @@ namespace UPServer
         }
         public void ReadLoop()
         {
-
+            while(client.Connected)
+            {
+                String msg = streamReader.ReadLine();
+                string[] comp = msg.Split(',');
+                switch(comp[0])
+                {
+                    case "Username:":
+                        SetUsername(comp[1]);
+                        break;
+                }
+            }
         }
         public void SaveData(UserClient client, List<KeyEntry> data)
         {
@@ -65,7 +75,11 @@ namespace UPServer
         }
         public void SetUsername(String name)
         {
-
+            userName = name;
+            if(connected)
+            {
+                
+            }
         }
     }
 }

@@ -20,7 +20,6 @@ namespace UPClient
             parent = p;
             //Need to retrieve serverAddress from an external txt file or something.
             client = new Client("localhost", this);
-            client.Start();
         }
         public void updateError(String msg)
         {
@@ -30,7 +29,10 @@ namespace UPClient
         {
             errorTxt.Text = "";
         }
-
+        public void Start()
+        {
+            client.Start();
+        }
         private void HasClosed(object sender, FormClosedEventArgs e)
         {
             client.Stop();

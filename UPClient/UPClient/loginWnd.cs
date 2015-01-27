@@ -28,16 +28,22 @@ namespace UPClient
 
         private void submitBtn_Click(object sender, EventArgs e)
         {
-            if(running == null)
+            bool passed = false;
+            if (running == null)
                 running = new RunningWnd(parent);
-            if (running.client.Login(usernameRTxt.Text, passwordRTxt.Text))
+            passed = running.client.Login(usernameTxt.Text, passwordTxt.Text);
+            if (passed)
             {
-                running.Show();
-                Hide();
-            }
-            else
-            {
-                //ask for resubmission with new username
+
+                if (running.client.Login(usernameRTxt.Text, passwordRTxt.Text))
+                {
+                    running.Show();
+                    Hide();
+                }
+                else
+                {
+                    //ask for resubmission with new username
+                }
             }
         }
 
