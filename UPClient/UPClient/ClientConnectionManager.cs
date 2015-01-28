@@ -20,13 +20,26 @@ namespace UPClient
         NetworkStream networkStream;
         StreamWriter serverWriter;
         StreamReader serverReader;
+        String response;
         public ClientConnectionManager(String ServerAddress)
         {
             serverAddress = ServerAddress == "localhost" ? "127.0.0.1" : ServerAddress;
         }
         public bool CheckCredentials(String UserName, String Password)
         {
-            return true;
+            serverWriter.WriteLine("CheckCredentials," + UserName +","+Password);
+            serverWriter.Flush();
+            bool answer = false;
+            while (response == null)
+            { 
+                System.Threading.Thread.Sleep(10); 
+            }
+            if (response == "true")
+                answer = true;
+            else
+                answer = false;
+            response = null;
+            return answer;
         }
         private void ReadLoop()
         {
@@ -36,8 +49,12 @@ namespace UPClient
                 try
                 {
                     msg = serverReader.ReadLine();
-                    switch(msg)
+                    string[] comp = msg.Split(',');
+                    switch (comp[0])
                     {
+                        case "Response":
+                            response = comp[1];
+                            break;
                         default:
                             break;
                     }
@@ -48,11 +65,20 @@ namespace UPClient
                 }
             }
         }
+        private void SendMessage(String msg)
+        {
+            if (serverWriter != null)
+            {
+                serverWriter.WriteLine(msg);
+                serverWriter.Flush();
+            }
+        }
         public bool SendData(List<KeyEntry> Data)
         {
             bool success = true;
             if (Connected)
             {
+                SendMessage("Data");
                 IFormatter formatter = new BinaryFormatter();
                 List<KeyEntry> listtest = new List<KeyEntry>();
                 //KeyEntry test = new KeyEntry(new Byte(), 123, "test Type");

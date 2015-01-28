@@ -23,5 +23,9 @@ namespace UPServer
         {
             return connection;
         }
+        public bool CheckCredentials(String UserName, String Password)
+        {
+            return true;
+        }
     }
 }

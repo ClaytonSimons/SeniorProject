@@ -31,19 +31,15 @@ namespace UPClient
             bool passed = false;
             if (running == null)
                 running = new RunningWnd(parent);
-            passed = running.client.Login(usernameTxt.Text, passwordTxt.Text);
-            if (passed)
+            if (running.client.Login(usernameRTxt.Text, passwordRTxt.Text))
             {
-
-                if (running.client.Login(usernameRTxt.Text, passwordRTxt.Text))
-                {
-                    running.Show();
-                    Hide();
-                }
-                else
-                {
-                    //ask for resubmission with new username
-                }
+                running.Show();
+                Hide();
+                running.Start();
+            }
+            else
+            {
+                //ask for resubmission with new username
             }
         }
 

@@ -8,6 +8,7 @@ using System.IO;
 using System.Net.Sockets;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Diagnostics;
 using KeyData;
 
 namespace UPServer
@@ -20,6 +21,7 @@ namespace UPServer
         Proctor proctor;
         NetworkStream networkStream;
         StreamReader streamReader;
+        StreamWriter streamWriter;
         int userID;
         String userName;
         TcpClient client;
@@ -30,8 +32,7 @@ namespace UPServer
             proctor = p;
             networkStream = client.GetStream();
             streamReader = new StreamReader(networkStream);
-            Thread dataThread = new Thread(new ThreadStart(DataLoop));
-            dataThread.Start();
+            streamWriter = new StreamWriter(networkStream);
             Thread readThread = new Thread(new ThreadStart(ReadLoop));
             readThread.Start();
         }
@@ -42,27 +43,54 @@ namespace UPServer
             networkStream.Close();
             client.Close();
         }
-        public void DataLoop()
+        public void DataCollection()
         {
-            while (client.Connected)
+            IFormatter formatter = new BinaryFormatter();
+            try
             {
-                IFormatter formatter = new BinaryFormatter();
                 List<KeyEntry> entry = (List<KeyEntry>)formatter.Deserialize(networkStream);
                 proctor.SaveData(this,entry);
+            }
+            catch(Exception e)
+            {
+                Debug.Write(e);
             }
         }
         public void ReadLoop()
         {
             while(client.Connected)
             {
-                String msg = streamReader.ReadLine();
-                string[] comp = msg.Split(',');
-                switch(comp[0])
+                try
                 {
-                    case "Username:":
-                        SetUsername(comp[1]);
-                        break;
+                    String msg = streamReader.ReadLine();
+                    string[] comp = msg.Split(',');
+                    HandleMessage(comp);
                 }
+                catch(Exception e)
+                {
+                    Debug.WriteLine(e);
+                }
+            }
+        }
+        private void HandleMessage(string[] msg)
+        {
+            switch (msg[0])
+            {
+                case "Username":
+                    SetUsername(msg[1]);
+                    break;
+                case "CheckCredentials":
+                    if (proctor.CheckCredentials(msg[1], msg[2]))
+                        streamWriter.WriteLine("Response,true");
+                    else
+                        streamWriter.WriteLine("Response,false");
+                    streamWriter.Flush();
+                    break;
+                case "Data":
+                    DataCollection();
+                    break;
+                default:
+                    break;
             }
         }
         public void SaveData(UserClient client, List<KeyEntry> data)

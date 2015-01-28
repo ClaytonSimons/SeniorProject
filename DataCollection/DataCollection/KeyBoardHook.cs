@@ -363,7 +363,7 @@ namespace DataCollection
         /// <summary>
         /// Occurs when the user presses a key
         /// </summary>
-        public event KeyEventHandler KeyDown;
+        public event EventHandler<KeyboardHookArgs> KeyDown;
 
         /// <summary>
         /// Occurs when the user presses and releases 
@@ -507,7 +507,11 @@ namespace DataCollection
                 {
                     Keys keyData = (Keys)MyKeyboardHookStruct.vkCode;
                     KeyEventArgs e = new KeyEventArgs(keyData);
-                    KeyDown(this, e);
+                    KeyboardHookArgs ea = new KeyboardHookArgs(MyKeyboardHookStruct.vkCode,
+                                            MyKeyboardHookStruct.scanCode,
+                                            MyKeyboardHookStruct.flags,
+                                            MyKeyboardHookStruct.time);
+                    KeyDown(this, ea);
                     handled = handled || e.Handled;
                 }
 

@@ -45,11 +45,11 @@ namespace DataCollection
         }
         private void HookerKeyPress(object sender, KeyboardHookArgs e)
         {
-            DataLstBox.Items.Add((char)e.vkCode + "time:" + e.time.ToString());
+            
 
         }
-        private void HookerKeyDown(object sender, KeyEventArgs e)
-        {
+        private void HookerKeyDown(object sender, KeyboardHookArgs e)
+        {DataLstBox.Items.Add((char)e.vkCode + "time:" + e.time.ToString());
         }
 
         private void startBtn_Click(object sender, EventArgs e)

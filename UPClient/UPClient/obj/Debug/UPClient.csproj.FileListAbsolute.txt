@@ -23,3 +23,5 @@ G:\SeniorProject\UPClient\UPClient\obj\Debug\UPClient.runningWnd.resources
 G:\SeniorProject\UPClient\UPClient\obj\Debug\UPClient.startWnd.resources
 G:\SeniorProject\UPClient\UPClient\obj\Debug\UPClient.Properties.Resources.resources
 G:\SeniorProject\UPClient\UPClient\obj\Debug\UPClient.csproj.GenerateResource.Cache
+C:\Users\Clay\Documents\GitHub\SeniorProject\UPClient\UPClient\bin\Debug\KeyEntry.dll
+C:\Users\Clay\Documents\GitHub\SeniorProject\UPClient\UPClient\bin\Debug\KeyEntry.pdb

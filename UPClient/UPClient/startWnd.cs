@@ -25,6 +25,7 @@ namespace UPClient
             {
                 running = new RunningWnd(this);
                 running.Show();
+                running.Start();
                 Hide();
             }
             else if(learningRadBtn.Checked)
