@@ -72,6 +72,11 @@
     <Compile Include="ServerConnectionManager.cs" />
     <Compile Include="UserClient.cs" />
     <Compile Include="UserData.cs" />
+    <Compile Include="UserDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserDBDataSet.xsd</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ActiveClientsWnd.resx">
       <DependentUpon>ActiveClientsWnd.cs</DependentUpon>
     </EmbeddedResource>
@@ -99,6 +104,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="UserDBDataSet.xsc">
+      <DependentUpon>UserDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="UserDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>UserDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="UserDBDataSet.xss">
+      <DependentUpon>UserDBDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
