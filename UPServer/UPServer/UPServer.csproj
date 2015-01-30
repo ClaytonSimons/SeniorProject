@@ -78,6 +78,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UserDBDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="UserDBDataSetWorker.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserDBDataSetWorker.xsd</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ActiveClientsWnd.resx">
       <DependentUpon>ActiveClientsWnd.cs</DependentUpon>
     </EmbeddedResource>
@@ -115,6 +120,17 @@
     </None>
     <None Include="UserDBDataSet.xss">
       <DependentUpon>UserDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="UserDBDataSetWorker.xsc">
+      <DependentUpon>UserDBDataSetWorker.xsd</DependentUpon>
+    </None>
+    <None Include="UserDBDataSetWorker.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>UserDBDataSetWorker.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="UserDBDataSetWorker.xss">
+      <DependentUpon>UserDBDataSetWorker.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
