@@ -12,10 +12,10 @@ namespace UPServer
     public class UserData
     {
         SqlConnection connection;
-        UserDBDataSet dataSet;
+        UserDBDataSetWorker dataSet;
         public UserData()
         {
-            dataSet = new UserDBDataSet();
+            dataSet = new UserDBDataSetWorker();
             UserClient testclient = new UserClient();
             testclient.SetUsername("Clay");
             testclient.SetPass("Simons");
@@ -34,16 +34,16 @@ namespace UPServer
         }
         public bool SaveData(UserClient client, List<KeyData.KeyEntry> data)
         {
-            UserDBDataSet.WordDataRow Data = dataSet.WordData.NewWordDataRow();
-            List<UserDBDataSet.WordDataRow> words = new List<UserDBDataSet.WordDataRow>();
+            UserDBDataSetWorker.WordDataRow Data = dataSet.WordData.NewWordDataRow();
+            List<UserDBDataSetWorker.WordDataRow> words = new List<UserDBDataSetWorker.WordDataRow>();
             String PKBT,CKBT;//Previous and current keyboard type
             PKBT = data[0].keyboardType;
-            List<UserDBDataSet.TimingRow> timingEntries = new List<UserDBDataSet.TimingRow>();
+            List<UserDBDataSetWorker.TimingRow> timingEntries = new List<UserDBDataSetWorker.TimingRow>();
             int Ptime = Ptime = 0, Ctime = 0;
             Data.Word = "";
             foreach(KeyData.KeyEntry entry in data)//extract data from parameter data
             {
-                UserDBDataSet.TimingRow timingEntry = dataSet.Timing.NewTimingRow();
+                UserDBDataSetWorker.TimingRow timingEntry = dataSet.Timing.NewTimingRow();
                 Ctime = entry.time;
                 timingEntry.Timing = Ctime - Ptime;
                 CKBT = entry.keyboardType;
@@ -79,9 +79,9 @@ namespace UPServer
                 Ptime = Ctime;
                 PKBT = CKBT;
             }
-            foreach (UserDBDataSet.WordDataRow word in words)
+            foreach (UserDBDataSetWorker.WordDataRow word in words)
             {
-                UserDBDataSet.WordDataRow newWord = dataSet.WordData.NewWordDataRow();
+                UserDBDataSetWorker.WordDataRow newWord = dataSet.WordData.NewWordDataRow();
                 //dataSet.WordData.AddWordDataRow();
             }
             return true;
@@ -116,6 +116,16 @@ namespace UPServer
                     break;
             }
             return answer;
+        }
+        public bool CheckCredentials(String UserName, String Password)
+        {
+
+            UserDBDataSetWorkerTableAdapters.UserClientTableAdapter checkAdapter = new UserDBDataSetWorkerTableAdapters.UserClientTableAdapter();
+            UserDBDataSetWorker.UserClientDataTable table = new UserDBDataSetWorker.UserClientDataTable();
+            checkAdapter.CheckCredentials(table,UserName,Password);
+            if (table.Count == 1)
+                return true;
+            return false;
         }
     }
 
