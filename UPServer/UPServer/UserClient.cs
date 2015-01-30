@@ -26,6 +26,8 @@ namespace UPServer
         String userName;
         TcpClient client;
         bool connected;
+        public UserClient()
+        { }
         public UserClient(TcpClient c,Proctor p)
         {
             client = c;
@@ -108,6 +110,18 @@ namespace UPServer
             {
                 
             }
+        }
+        public void SetPass(String pass)
+        {
+            password = pass;
+        }
+        public String GetName()
+        {
+            return userName;
+        }
+        public String GetPass()
+        {
+            return password;
         }
     }
 }

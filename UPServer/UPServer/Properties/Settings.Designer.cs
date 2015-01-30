@@ -26,7 +26,7 @@ namespace UPServer.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=WORKER\\UPSERVER;Initial Catalog=UserDB;User ID=UPProctor")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SCUTULATUS\\USERPREDICTOR;Initial Catalog=UserDB;User ID=UPProctor")]
         public string UserDBConnectionString {
             get {
                 return ((string)(this["UserDBConnectionString"]));

@@ -29,9 +29,9 @@ CONSTRAINT WordData_UserClient_fk FOREIGN KEY (UserID) REFERENCES UserClient (Us
 
 CREATE TABLE Timing
 (
-TimingID	INT IDENTITY(1,1) NOT NULL,
+TimingID	BIGINT IDENTITY(1,1) NOT NULL,
 WordID		INT NOT NULL,
-Timeing		INT,
+Timing		INT,
 CONSTRAINT Timing_pk PRIMARY KEY (TimingID),
 CONSTRAINT Timing_Timing_fk FOREIGN KEY (WordID) REFERENCES WordData (WordID)
 );

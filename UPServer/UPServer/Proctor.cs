@@ -17,7 +17,8 @@ namespace UPServer
         }
         public void SaveData(UserClient client, List<KeyData.KeyEntry> data)
         {
-            bool GotHere = true;
+            
+            bool GotHere = database.SaveData(client, data);
         }
         public ServerConnectionManager GetConnection()
         {
