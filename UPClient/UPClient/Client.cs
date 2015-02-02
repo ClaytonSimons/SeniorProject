@@ -31,7 +31,7 @@ namespace UPClient
         }
         public bool Register(String UserName, String Password)
         {
-            return true;
+            return connection.RegisterCredentials(UserName,Password);
         }
         public void SendData()
         {

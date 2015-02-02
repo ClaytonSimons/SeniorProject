@@ -127,6 +127,16 @@ namespace UPServer
                 return true;
             return false;
         }
+        public bool RegisterCredentials(String UserName, String Password)
+        {
+            bool answer = false;
+            if(!CheckCredentials(UserName,Password))//if username and password is not in the database already.
+            {
+                UserDBDataSetWorkerTableAdapters.UserClientTableAdapter adapter = new UserDBDataSetWorkerTableAdapters.UserClientTableAdapter();
+                adapter.UserClientInsert(UserName, Password);
+                answer = true;
+            }
+            return answer;
+        }
     }
-
 }

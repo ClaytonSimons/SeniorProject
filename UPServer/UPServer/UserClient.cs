@@ -88,6 +88,13 @@ namespace UPServer
                         streamWriter.WriteLine("Response,false");
                     streamWriter.Flush();
                     break;
+                case "RegisterCredentials":
+                    if (proctor.RegisterCredentials(msg[1], msg[2]))
+                        streamWriter.WriteLine("Response,true");
+                    else
+                        streamWriter.WriteLine("Response,false");
+                    streamWriter.Flush();
+                    break;
                 case "Data":
                     DataCollection();
                     break;

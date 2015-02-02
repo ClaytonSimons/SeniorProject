@@ -26,7 +26,11 @@ namespace UPServer
         }
         public bool CheckCredentials(String UserName, String Password)
         {
-            return true;
+            return database.CheckCredentials(UserName,Password);
+        }
+        public bool RegisterCredentials(String UserName, String Password)
+        {
+            return database.RegisterCredentials(UserName, Password);
         }
     }
 }

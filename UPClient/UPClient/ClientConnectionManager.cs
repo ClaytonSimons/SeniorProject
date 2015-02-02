@@ -41,6 +41,22 @@ namespace UPClient
             response = null;
             return answer;
         }
+        public bool RegisterCredentials(String UserName, String Password)
+        {
+            serverWriter.WriteLine("RegisterCredentials," + UserName + "," + Password);
+            serverWriter.Flush();
+            bool answer = false;
+            while (response == null)
+            {
+                System.Threading.Thread.Sleep(10);
+            }
+            if (response == "true")
+                answer = true;
+            else
+                answer = false;
+            response = null;
+            return answer;
+        }
         private void ReadLoop()
         {
             String msg;
@@ -90,10 +106,6 @@ namespace UPClient
             else
                 success = false;
             return success;
-        }
-        public bool RegisterCredentials(String UserName, String Password)
-        {
-            return true;
         }
         public void Connect()
         {
