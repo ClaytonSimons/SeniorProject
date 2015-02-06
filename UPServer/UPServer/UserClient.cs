@@ -81,6 +81,9 @@ namespace UPServer
                 case "Username":
                     SetUsername(msg[1]);
                     break;
+                case "Password":
+                    SetPass(msg[1]);
+                    break;
                 case "CheckCredentials":
                     if (proctor.CheckCredentials(msg[1], msg[2]))
                         streamWriter.WriteLine("Response,true");

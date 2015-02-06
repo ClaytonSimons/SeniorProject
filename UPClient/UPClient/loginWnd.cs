@@ -47,7 +47,7 @@ namespace UPClient
         {
             registration = new RegistrationWnd(parent);
             registration.Show();
-            Close();
+            Hide();
         }
     }
 }

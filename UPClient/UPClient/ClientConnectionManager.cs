@@ -81,7 +81,7 @@ namespace UPClient
                 }
             }
         }
-        private void SendMessage(String msg)
+        public void SendMessage(String msg)
         {
             if (serverWriter != null)
             {

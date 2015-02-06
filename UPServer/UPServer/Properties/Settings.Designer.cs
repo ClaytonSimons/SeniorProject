@@ -36,7 +36,8 @@ namespace UPServer.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=WORKER\\UPSERVER;Initial Catalog=UserDB;User ID=UPProctor")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=WORKER\\UPSERVER;Initial Catalog=UserDB;User ID=UPProctor; Password=Pr" +
+            "ediction")]
         public string UserDBConnectionStringWorker {
             get {
                 return ((string)(this["UserDBConnectionStringWorker"]));

@@ -27,11 +27,23 @@ namespace UPClient
         }
         public bool Login(String UserName, String Password)
         {
-            return connection.CheckCredentials(UserName, Password);
+            bool answer = connection.CheckCredentials(UserName, Password);
+            if(answer)
+            {
+                connection.SendMessage("Username,"+UserName);
+                connection.SendMessage("Password,"+Password);
+            }
+            return answer;
         }
         public bool Register(String UserName, String Password)
         {
-            return connection.RegisterCredentials(UserName,Password);
+            bool answer = connection.RegisterCredentials(UserName,Password);
+            if (answer)
+            {
+                connection.SendMessage("Username," + UserName);
+                connection.SendMessage("Password," + Password);
+            }
+            return answer;
         }
         public void SendData()
         {

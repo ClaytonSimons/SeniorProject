@@ -17,30 +17,29 @@ namespace UPServer
         {
             dataSet = new UserDBDataSetWorker();
             UserClient testclient = new UserClient();
-            testclient.SetUsername("Clay");
-            testclient.SetPass("Simons");
-            List<KeyData.KeyEntry> testdata = new List<KeyData.KeyEntry>();
-            testdata.Add(new KeyData.KeyEntry((Byte)'h', 12345, "type"));
-            testdata.Add(new KeyData.KeyEntry((Byte)'e', 12355, "type"));
-            testdata.Add(new KeyData.KeyEntry((Byte)'l', 12375, "type"));
-            testdata.Add(new KeyData.KeyEntry((Byte)'l', 12395, "type"));
-            testdata.Add(new KeyData.KeyEntry((Byte)'o', 12595, "type"));
-            testdata.Add(new KeyData.KeyEntry((Byte)' ', 12745, "type"));
-            testdata.Add(new KeyData.KeyEntry((Byte)' ', 12755, "type"));
-            testdata.Add(new KeyData.KeyEntry((Byte)'t', 12765, "type"));
-            testdata.Add(new KeyData.KeyEntry((Byte)'o', 12775, "type"));
-            testdata.Add(new KeyData.KeyEntry((Byte)' ', 12785, "type"));
-            SaveData(testclient, testdata);
+            //testclient.SetUsername("Clay");
+            //testclient.SetPass("Simons");
+            //List<KeyData.KeyEntry> testdata = new List<KeyData.KeyEntry>();
+            //testdata.Add(new KeyData.KeyEntry((Byte)'h', 12345, "type"));
+            //testdata.Add(new KeyData.KeyEntry((Byte)'e', 12355, "type"));
+            //testdata.Add(new KeyData.KeyEntry((Byte)'l', 12375, "type"));
+            //testdata.Add(new KeyData.KeyEntry((Byte)'l', 12395, "type"));
+            //testdata.Add(new KeyData.KeyEntry((Byte)'o', 12595, "type"));
+            //testdata.Add(new KeyData.KeyEntry((Byte)' ', 12745, "type"));
+            //testdata.Add(new KeyData.KeyEntry((Byte)' ', 12755, "type"));
+            //testdata.Add(new KeyData.KeyEntry((Byte)'t', 12765, "type"));
+            //testdata.Add(new KeyData.KeyEntry((Byte)'o', 12775, "type"));
+            //SaveData(testclient, testdata);
         }
         public bool SaveData(UserClient client, List<KeyData.KeyEntry> data)
         {
-            UserDBDataSetWorker.WordDataRow Data = dataSet.WordData.NewWordDataRow();
-            List<UserDBDataSetWorker.WordDataRow> words = new List<UserDBDataSetWorker.WordDataRow>();
+            WordInsert Data = new WordInsert();
+            List<WordInsert> words = new List<WordInsert>();
             String PKBT,CKBT;//Previous and current keyboard type
             PKBT = data[0].keyboardType;
             List<UserDBDataSetWorker.TimingRow> timingEntries = new List<UserDBDataSetWorker.TimingRow>();
             int Ptime = Ptime = 0, Ctime = 0;
-            Data.Word = "";
+            Data.word = "";
             foreach(KeyData.KeyEntry entry in data)//extract data from parameter data
             {
                 UserDBDataSetWorker.TimingRow timingEntry = dataSet.Timing.NewTimingRow();
@@ -49,40 +48,54 @@ namespace UPServer
                 CKBT = entry.keyboardType;
                 if(entry.keyValue == ':' || entry.keyValue == ',' || entry.keyValue == ' ')
                 {
-                    if (Data.Word != "")
+                    if (Data.word != "")
                     {
                         Data.KeyboardType = keyToInt(CKBT);
+                        Data.UserID = GetUserClientID(client.GetName(), client.GetPass());
                         words.Add(Data);
                     }
-                    Data = dataSet.WordData.NewWordDataRow();
-                    Data.Word = "";
+                    Data = new WordInsert();
+                    Data.word = "";
                     Ctime = 0;
                 }
                 else if (CKBT != PKBT)
                 {
-                    if (Data.Word != "")
+                    if (Data.word != "")
                     {
                         Data.KeyboardType = keyToInt(CKBT);
+                        Data.UserID = GetUserClientID(client.GetName(), client.GetPass());
                         words.Add(Data);
                     }
-                    Data = dataSet.WordData.NewWordDataRow();
-                    Data.Word = "";
+                    Data = new WordInsert();
+                    Data.word = "";
                     Ctime = 0;
-                    Data.Word += entry.keyValue.ToString();
+                    Data.word += entry.keyValue.ToString();
                 }
                 else
                 {
-                    Data.Word += (char)entry.keyValue;
+                    Data.word += (char)entry.keyValue;
                     if (timingEntry.Timing != Ctime)
                         timingEntries.Add(timingEntry);
                 }
                 Ptime = Ctime;
                 PKBT = CKBT;
             }
-            foreach (UserDBDataSetWorker.WordDataRow word in words)
+            //Get straggling data.
+            Data.KeyboardType = keyToInt(data[data.Count-1].keyboardType);
+            Data.UserID = GetUserClientID(client.GetName(), client.GetPass());
+            words.Add(Data);
+
+            foreach (WordInsert word in words)//enter words
             {
-                UserDBDataSetWorker.WordDataRow newWord = dataSet.WordData.NewWordDataRow();
-                //dataSet.WordData.AddWordDataRow();
+                UserDBDataSetWorkerTableAdapters.WordDataTableAdapter adapter = new UserDBDataSetWorkerTableAdapters.WordDataTableAdapter();
+                int test1 = GetUserClientID(client.GetName(), client.GetPass());
+                adapter.WordInsert(test1, word.word, word.KeyboardType);
+                int test = GetLatestWordID();
+                for (int i = 1; i < word.word.Length;i++)//enter timing for words
+                {
+                    UserDBDataSetWorkerTableAdapters.TimingTableAdapter timeAdapter = new UserDBDataSetWorkerTableAdapters.TimingTableAdapter();
+                    timeAdapter.TimingInsert(GetLatestWordID(),timingEntries[i].Timing,i);
+                }
             }
             return true;
         }
@@ -117,6 +130,15 @@ namespace UPServer
             }
             return answer;
         }
+        private int GetUserClientID(String UserName, String Password)
+        {
+            UserDBDataSetWorkerTableAdapters.UserClientTableAdapter checkAdapter = new UserDBDataSetWorkerTableAdapters.UserClientTableAdapter();
+            UserDBDataSetWorker.UserClientDataTable table = new UserDBDataSetWorker.UserClientDataTable();
+            checkAdapter.CheckCredentials(table, UserName, Password);
+            if (table.Count == 1)
+                return table[0].UserID;
+            return -1;
+        }
         public bool CheckCredentials(String UserName, String Password)
         {
 
@@ -138,5 +160,21 @@ namespace UPServer
             }
             return answer;
         }
+        public int GetLatestWordID()
+        {
+            int answer = 0;
+            UserDBDataSetWorkerTableAdapters.WordDataTableAdapter adapter = new UserDBDataSetWorkerTableAdapters.WordDataTableAdapter();
+            UserDBDataSetWorker.UserClientDataTable table = new UserDBDataSetWorker.UserClientDataTable();
+            answer = adapter.MaxWordID().Value;
+            return answer;
+        }
+    }
+    public struct WordInsert
+    {
+        public String word;
+        public int[] timing;
+        public int WordID;
+        public int UserID;
+        public int KeyboardType;
     }
 }

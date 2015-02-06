@@ -33,6 +33,7 @@ namespace UPClient
             {
                 running.Show();
                 Hide();
+                running.Start();
             }
             else
             {

@@ -20,7 +20,6 @@ CREATE TABLE WordData
 WordID	INT	IDENTITY(1,1) NOT NULL,
 UserID	INT NOT NULL,
 Word	VARCHAR(50),
-KeyValue	INT,
 KeyboardType	INT,
 CONSTRAINT WordData_pk PRIMARY KEY (WordID),
 CONSTRAINT WordData_UserClient_fk FOREIGN KEY (UserID) REFERENCES UserClient (UserID)
@@ -32,6 +31,7 @@ CREATE TABLE Timing
 TimingID	BIGINT IDENTITY(1,1) NOT NULL,
 WordID		INT NOT NULL,
 Timing		INT,
+Ordering	INT,
 CONSTRAINT Timing_pk PRIMARY KEY (TimingID),
 CONSTRAINT Timing_Timing_fk FOREIGN KEY (WordID) REFERENCES WordData (WordID)
 );
