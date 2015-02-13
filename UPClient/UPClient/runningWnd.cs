@@ -19,7 +19,7 @@ namespace UPClient
             InitializeComponent();
             parent = p;
             //Need to retrieve serverAddress from an external txt file or something.
-            client = new Client("localhost", this);
+            client = new Client("WORKER", this);
         }
         public void updateError(String msg)
         {
