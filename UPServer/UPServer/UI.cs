@@ -18,10 +18,6 @@ namespace UPServer
         public UI()
         {
             InitializeComponent();
-        
-            
-            
-            
             proctor = new Proctor();
         }
 
@@ -30,30 +26,29 @@ namespace UPServer
 
         }
 
-        private void activeClientsBtn_Click(object sender, EventArgs e)
-        {
-            if (allWnd == null)
-                allWnd = new AllUsersWnd();
-            allWnd.Show();
-        }
-
         private void usersBtn_Click(object sender, EventArgs e)
         {
-            if (activeWnd == null)
-                activeWnd = new ActiveClientsWnd();
+            if (allWnd != null)
+            {
+                allWnd.Close();
+            }
+            allWnd = new AllUsersWnd(proctor);
+            allWnd.Show(); 
+        }
+
+        private void activeClientsBtn_Click(object sender, EventArgs e)
+        {
+            if (activeWnd != null)
+            {
+                activeWnd.Close();
+            }
+            activeWnd = new ActiveClientsWnd(proctor);
             activeWnd.Show();
         }
 
         private void Closed(object sender, FormClosedEventArgs e)
         {
             proctor.GetConnection().Stop();
-
-
-
-
-
-
-
         }
     }
 }

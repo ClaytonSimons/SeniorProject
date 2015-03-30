@@ -31,16 +31,20 @@ namespace UPClient
             bool passed = false;
             if (running == null)
                 running = new RunningWnd(parent);
-            if (running.client.Login(usernameRTxt.Text, passwordRTxt.Text))
-            {
-                running.Show();
-                Hide();
-                running.Start();
-            }
+            if (running.client.isConnected())
+                if (running.client.Login(usernameRTxt.Text, passwordRTxt.Text))
+                {
+                    running.Show();
+                    Hide();
+                    running.Start();
+                }
+                else
+                {
+                    errorTxt.Text = "Credentials are not valid";
+                    //ask for resubmission with new username
+                }
             else
-            {
-                //ask for resubmission with new username
-            }
+                errorTxt.Text = "Could not connect to server";
         }
 
         private void registrationBtn_Click(object sender, EventArgs e)

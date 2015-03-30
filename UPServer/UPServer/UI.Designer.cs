@@ -56,9 +56,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(295, 55);
+            this.ClientSize = new System.Drawing.Size(294, 51);
             this.Controls.Add(this.usersBtn);
             this.Controls.Add(this.activeClientsBtn);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "UI";
             this.Text = "User Prediction Server";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Closed);

@@ -13,13 +13,14 @@ namespace UPClient
     public partial class RunningWnd : Form
     {
         public Client client;
-        private StartWnd parent;
+        public StartWnd parent;
         public RunningWnd(StartWnd p)
         {
             InitializeComponent();
             parent = p;
             //Need to retrieve serverAddress from an external txt file or something.
-            client = new Client("SCUTULATUS", this);
+
+            client = new Client("WORKER", this);
         }
         public void updateError(String msg)
         {

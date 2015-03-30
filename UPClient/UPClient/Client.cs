@@ -21,7 +21,14 @@ namespace UPClient
             keyLogger = new KeyLogger();
             connection = new ClientConnectionManager(serverAddress);
             UI = parent;
-            connection.Connect();
+            try
+            {
+                connection.Connect();
+            }
+            catch(Exception e)
+            {
+                UI.parent.ErrorMessage("Could not connect to Server");
+            }
             runThread = new Thread(new ThreadStart(SendData));
             runThread.Start();
         }
@@ -30,8 +37,7 @@ namespace UPClient
             bool answer = connection.CheckCredentials(UserName, Password);
             if(answer)
             {
-                connection.SendMessage("Username,"+UserName);
-                connection.SendMessage("Password,"+Password);
+                connection.SendMessage("Learning");
             }
             return answer;
         }
@@ -40,8 +46,7 @@ namespace UPClient
             bool answer = connection.RegisterCredentials(UserName,Password);
             if (answer)
             {
-                connection.SendMessage("Username," + UserName);
-                connection.SendMessage("Password," + Password);
+                connection.SendMessage("Learning");
             }
             return answer;
         }
@@ -67,7 +72,12 @@ namespace UPClient
         {
             if(keyLogger.IsActive)
                 keyLogger.Stop();
+            connection.SendMessage("Disconnect");
             connection.Disconnect();
+        }
+        public bool isConnected()
+        {
+            return connection.Connected;
         }
     }
 }

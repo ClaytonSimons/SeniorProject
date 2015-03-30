@@ -85,8 +85,16 @@ namespace UPClient
         {
             if (serverWriter != null)
             {
-                serverWriter.WriteLine(msg);
-                serverWriter.Flush();
+                try
+                {
+                    serverWriter.WriteLine(msg);
+                    serverWriter.Flush();
+                }
+                catch(Exception e)
+                {
+                    
+                    //connection closed
+                }
             }
         }
         public bool SendData(List<KeyEntry> Data)
@@ -118,8 +126,13 @@ namespace UPClient
         }
         public void Disconnect()
         {
-            networkStream.Close();
-            Close();
+            if (Connected)
+            {
+                networkStream.Close();
+                Close();
+                serverReader = null;
+                serverWriter = null;
+            }
         }
     }
 }

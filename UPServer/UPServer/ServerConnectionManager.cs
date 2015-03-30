@@ -14,9 +14,9 @@ namespace UPServer
     {
         private List<UserClient> clients = new List<UserClient>();
         bool connected;
-        List<UserClient> learningClients;
+        List<UserClient> learningClients = new List<UserClient>();
         Proctor proctor;
-        List<UserClient> predictingClients;
+        List<UserClient> predictingClients = new List<UserClient>();
         NetworkStream networkStream;
         StreamReader reader;
         StreamWriter writer;
@@ -29,9 +29,28 @@ namespace UPServer
             runThread = new Thread(new ThreadStart(Run));
             runThread.Start();
         }
+        ~ServerConnectionManager()
+        {
+            if (runThread != null && runThread.IsAlive)
+                runThread.Abort();
+        }
         public void DisconnectClient(UserClient client)
         {
+            clients.Remove(client);
+            learningClients.Remove(client);
+            predictingClients.Remove(client);
+            proctor.needsUpdate = true;
             client.Disconnect();
+        }
+        public void AddToLearning(UserClient client)
+        {
+            learningClients.Add(client);
+            predictingClients.Remove(client);
+        }
+        public void AddToPredicting(UserClient client)
+        {
+            predictingClients.Add(client);
+            learningClients.Remove(client);
         }
         public List<UserClient> GetClients()
         {
@@ -49,8 +68,10 @@ namespace UPServer
                 connected = true;
                 while(connected)
                 {
-                    UserClient client = new UserClient(server.AcceptTcpClient(),proctor);
+                    UserClient client = new UserClient(server.AcceptTcpClient(),proctor,this);
                     clients.Add(client);
+                    predictingClients.Add(client);
+                    proctor.needsUpdate = true;
                 }
             }
             catch(Exception e)
@@ -63,13 +84,43 @@ namespace UPServer
             connected = false;
             server.Stop();
         }
-        public void SetLearning(UserClient client, String Name, int ID)
+        public void SetLearning(UserClient target, String name, String pass, int userID)
         {
-
+            UserClient temp = GetClientByName(target.GetName());
+            temp.SetPass(pass);
+            temp.SetID(userID);
+            temp.SetUsername(name);
+            temp.SetLearning(true);
+            AddToLearning(temp);
         }
         public void SetPredicting(UserClient client)
         {
-            
+            client.SetID(-1);
+            client.SetUsername(UniqueName());
+            client.SetPass("");
+            client.SetLearning(false);
+            AddToPredicting(client);
+        }
+        public UserClient GetClientByName(String name)
+        {
+            UserClient answer = null;
+            foreach(UserClient client in clients)
+            {
+                if (client.GetName() == name)
+                    answer = client;
+            }
+            return answer;
+        }
+        public string UniqueName()
+        {
+            string answer = "User";
+            int i = 0;
+            answer += (clients.Count+i).ToString();
+            while(GetClientByName(answer)!=null)
+            {
+                answer = "User" + (clients.Count + ++i).ToString();
+            }
+            return answer;
         }
     }
 }

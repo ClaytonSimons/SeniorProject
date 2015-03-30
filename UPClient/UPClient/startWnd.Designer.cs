@@ -31,6 +31,7 @@
             this.startBtn = new System.Windows.Forms.Button();
             this.predictionRadBtn = new System.Windows.Forms.RadioButton();
             this.learningRadBtn = new System.Windows.Forms.RadioButton();
+            this.errorRTxt = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // startBtn
@@ -65,15 +66,27 @@
             this.learningRadBtn.Text = "Learning Mode";
             this.learningRadBtn.UseVisualStyleBackColor = true;
             // 
-            // startWnd
+            // errorRTxt
+            // 
+            this.errorRTxt.BackColor = System.Drawing.SystemColors.Control;
+            this.errorRTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.errorRTxt.ForeColor = System.Drawing.Color.Maroon;
+            this.errorRTxt.Location = new System.Drawing.Point(12, 41);
+            this.errorRTxt.Name = "errorRTxt";
+            this.errorRTxt.Size = new System.Drawing.Size(153, 18);
+            this.errorRTxt.TabIndex = 3;
+            this.errorRTxt.Text = "";
+            // 
+            // StartWnd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(285, 71);
+            this.Controls.Add(this.errorRTxt);
             this.Controls.Add(this.learningRadBtn);
             this.Controls.Add(this.predictionRadBtn);
             this.Controls.Add(this.startBtn);
-            this.Name = "startWnd";
+            this.Name = "StartWnd";
             this.Text = "User Prediction - Client";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -85,6 +98,7 @@
         private System.Windows.Forms.Button startBtn;
         private System.Windows.Forms.RadioButton predictionRadBtn;
         private System.Windows.Forms.RadioButton learningRadBtn;
+        private System.Windows.Forms.RichTextBox errorRTxt;
     }
 }
 

@@ -23,17 +23,26 @@ namespace UPClient
         {
             if(predictionRadBtn.Checked)
             {
+                errorRTxt.Text = "";
                 running = new RunningWnd(this);
                 running.Show();
                 running.Start();
-                Hide();
+                if (errorRTxt.Text == "")
+                    Hide();
+                else
+                    running.Hide();
             }
             else if(learningRadBtn.Checked)
             {
+                errorRTxt.Text = "";
                 login = new LoginWnd(this);
                 login.Show();
                 Hide();
             }
+        }
+        public void ErrorMessage(String msg)
+        {
+            errorRTxt.Text = msg;
         }
     }
 }
