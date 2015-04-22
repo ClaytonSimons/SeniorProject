@@ -75,8 +75,9 @@ namespace UPServer
         private KeyValuePair<int, double> predict(UserClient client)
         {
             KeyValuePair<int, double> answer;
-            List<KeyValuePair<int, double>> answerlist = new List<KeyValuePair<int, double>>();
-            double likeness = 0;
+            List<KeyValuePair<int, double>> answerlist = new List<KeyValuePair<int, double>>(), meanAnswerList = new List<KeyValuePair<int,double>>(),
+                                            medianAnswerList = new List<KeyValuePair<int, double>>();
+            double likeness = 0, meanLikeness = 0, medianLikeness = 0;
             List<WordData> predictionData = ToWords(client.GetPredictionData());
             if (predictionData.Count > 0)
             {
@@ -91,6 +92,7 @@ namespace UPServer
                         UserDBDataSetWorker.WordDataDataTable wordTable = wordAdapt.GetDataByUserIDandWord(userRow.UserID, word.GetWord());
                         if (wordTable.Count > 0)
                         {
+                            List<WordData> wordList = new List<WordData>();
                             foreach (UserDBDataSetWorker.WordDataRow wordRow in wordTable)
                             {
                                 UserDBDataSetWorkerTableAdapters.TimingTableAdapter timeAdapt = new UserDBDataSetWorkerTableAdapters.TimingTableAdapter();
@@ -102,19 +104,31 @@ namespace UPServer
                                     {
                                         timing[i] = timeTable[i].Timing;
                                     }
-                                    double comp = Compare(word, new WordData(wordRow.Word, timing, userRow.UserID));
+                                    WordData learnedWord = new WordData(wordRow.Word, timing, userRow.UserID);
+                                    double comp = Compare(word, learnedWord);
                                     if (comp > 0)
                                     {
-                                        likeness += Compare(word, new WordData(wordRow.Word, timing, userRow.UserID));
+                                        likeness += Compare(word, learnedWord);
                                         count++;
                                     }
+                                    wordList.Add(learnedWord);
                                 }
                             }
+                            if (word.GetTiming().Length > 0)
+                            {
+                                meanLikeness = MeanCompare(word, wordList);
+                                medianLikeness = MedianCompare(word, wordList);
+                            }
+                            //meanaverage
                         }
                     }
-                    answerlist.Add(new KeyValuePair<int, double>(userRow.UserID, likeness / count));
+                    likeness /= count;
+                    answerlist.Add(new KeyValuePair<int, double>(userRow.UserID, likeness));
+                    meanAnswerList.Add(new KeyValuePair<int, double>(userRow.UserID,  meanLikeness));
+                    medianAnswerList.Add(new KeyValuePair<int, double>(userRow.UserID, medianLikeness));
+
                     bool problem;
-                    if (likeness/count > 1)
+                    if (likeness > 1)
                         problem = true;
                     likeness = 0;
                     count = 0;
@@ -136,12 +150,13 @@ namespace UPServer
             }
             return answer;
         }
+
         public double Compare(WordData word1, WordData word2)
         {
             double answer = 0;
             if (word1.GetWord().Length == word2.GetWord().Length)
             {
-                double tolerance = 50;
+                double tolerance = 200;
                 int length = word1.GetWord().Length-1;
                 int count = 0;
                 for (int i = 0; i < length; i++)
@@ -161,6 +176,44 @@ namespace UPServer
                 if(answer > 1)
                     stop = true;
             }
+            return answer;
+        }
+        public double MeanCompare(WordData word, List<WordData> wordList)
+        {
+            double answer = 0;
+            int[] timing = new int[word.GetTiming().Length];
+            for(int i=0;i<word.GetTiming().Length;++i)
+            {
+                int mean = 0;
+                foreach(WordData listWord in wordList)
+                {
+                    mean += listWord.GetTiming()[i];
+                }
+                mean /= wordList.Count;
+                timing[i] = mean;
+            }
+            WordData meanWord = new WordData(word.GetWord(), timing,-1);
+            answer = Compare(word, meanWord);
+            return answer;
+        }
+        public double MedianCompare(WordData word, List<WordData> wordList)
+        {
+            double answer = 0;
+            int[] timing = new int[word.GetTiming().Length];
+            for (int i = 0; i < word.GetTiming().Length; ++i)
+            {
+                List<int> medianList = new List<int>();
+                int median = 0;
+                foreach (WordData listWord in wordList)
+                {
+                    medianList.Add(listWord.GetTiming()[i]);
+                }
+                medianList.Sort();
+                median = medianList[(wordList.Count / 2)];
+                timing[i] = median;
+            }
+            WordData meanWord = new WordData(word.GetWord(), timing, -1);
+            answer = Compare(word, meanWord);
             return answer;
         }
         private List<WordData> ToWords(List<KeyEntry> data)
