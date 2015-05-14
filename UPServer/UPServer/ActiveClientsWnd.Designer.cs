@@ -36,6 +36,9 @@
             this.PredictedUser = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.PredictedUserID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.PercentSure = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.medianModeBtn = new System.Windows.Forms.Button();
+            this.meanModeBtn = new System.Windows.Forms.Button();
+            this.compareModeBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // setLearningBtn
@@ -103,11 +106,44 @@
             // 
             this.PercentSure.Text = "%";
             // 
+            // medianModeBtn
+            // 
+            this.medianModeBtn.Location = new System.Drawing.Point(387, 263);
+            this.medianModeBtn.Name = "medianModeBtn";
+            this.medianModeBtn.Size = new System.Drawing.Size(120, 23);
+            this.medianModeBtn.TabIndex = 11;
+            this.medianModeBtn.Text = "Median Mode";
+            this.medianModeBtn.UseVisualStyleBackColor = true;
+            this.medianModeBtn.Click += new System.EventHandler(this.medianModeBtn_Click);
+            // 
+            // meanModeBtn
+            // 
+            this.meanModeBtn.Location = new System.Drawing.Point(387, 234);
+            this.meanModeBtn.Name = "meanModeBtn";
+            this.meanModeBtn.Size = new System.Drawing.Size(120, 23);
+            this.meanModeBtn.TabIndex = 10;
+            this.meanModeBtn.Text = "Mean Mode";
+            this.meanModeBtn.UseVisualStyleBackColor = true;
+            this.meanModeBtn.Click += new System.EventHandler(this.meanModeBtn_Click);
+            // 
+            // compareModeBtn
+            // 
+            this.compareModeBtn.Location = new System.Drawing.Point(387, 205);
+            this.compareModeBtn.Name = "compareModeBtn";
+            this.compareModeBtn.Size = new System.Drawing.Size(120, 23);
+            this.compareModeBtn.TabIndex = 9;
+            this.compareModeBtn.Text = "Compare Mode";
+            this.compareModeBtn.UseVisualStyleBackColor = true;
+            this.compareModeBtn.Click += new System.EventHandler(this.compareModeBtn_Click);
+            // 
             // ActiveClientsWnd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(536, 310);
+            this.Controls.Add(this.medianModeBtn);
+            this.Controls.Add(this.meanModeBtn);
+            this.Controls.Add(this.compareModeBtn);
             this.Controls.Add(this.activeClientsLstView);
             this.Controls.Add(this.setPredictingBtn);
             this.Controls.Add(this.setLearningBtn);
@@ -128,5 +164,8 @@
         private System.Windows.Forms.ColumnHeader PredictedUser;
         private System.Windows.Forms.ColumnHeader PredictedUserID;
         private System.Windows.Forms.ColumnHeader PercentSure;
+        private System.Windows.Forms.Button medianModeBtn;
+        private System.Windows.Forms.Button meanModeBtn;
+        private System.Windows.Forms.Button compareModeBtn;
     }
 }

@@ -80,6 +80,7 @@ namespace UPServer
         private void Closing(object sender, FormClosingEventArgs e)
         {
             proctor.StopPrediction();
+            proctor.SaveAnswers();
         }
 
         private void setLearningBtn_Click(object sender, EventArgs e)
@@ -107,6 +108,20 @@ namespace UPServer
                 }
             }
             Populate();
+        }
+        private void compareModeBtn_Click(object sender, EventArgs e)
+        {
+            proctor.predictionMode = 0;
+        }
+
+        private void meanModeBtn_Click(object sender, EventArgs e)
+        {
+            proctor.predictionMode = 1;
+        }
+
+        private void medianModeBtn_Click(object sender, EventArgs e)
+        {
+            proctor.predictionMode = 2;
         }
     }
 }

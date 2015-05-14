@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using KeyData;
+using System.IO;
 
 namespace UPServer
 {
@@ -16,6 +17,9 @@ namespace UPServer
         private bool predicting = false;
         private ActiveClientsWnd activeClientWnd;
         public bool needsUpdate = false;
+        public int predictionMode = 0;
+        List<KeyValuePair<int, double>> meanAList = new List<KeyValuePair<int,double>>();
+        List<KeyValuePair<int, double>> medianAList = new List<KeyValuePair<int, double>>();
         ~Proctor()
         {
             if (predictThread != null && predictThread.IsAlive)
@@ -41,6 +45,21 @@ namespace UPServer
         {
             predicting = false;
             predictThread = null;
+        }
+        /// <summary>
+        /// Saves prediction algorithm results for later analysis
+        /// </summary>
+        public void SaveAnswers()
+        {
+            StreamWriter stream = File.AppendText("Answers.txt");
+            StringBuilder entry = new StringBuilder();
+            foreach(KeyValuePair<int,double> pair in meanAList)
+            {
+                entry.Append(pair.Key + ":" +pair.Value.ToString() + " ");
+            }
+            stream.Write(DateTime.Now + ":" + entry.ToString() + Environment.NewLine );
+            stream.Flush();
+            stream.Close();
         }
         public void RunPrediction()
         {
@@ -126,7 +145,8 @@ namespace UPServer
                     answerlist.Add(new KeyValuePair<int, double>(userRow.UserID, likeness));
                     meanAnswerList.Add(new KeyValuePair<int, double>(userRow.UserID,  meanLikeness));
                     medianAnswerList.Add(new KeyValuePair<int, double>(userRow.UserID, medianLikeness));
-
+                    meanAList = meanAnswerList;
+                    medianAList = medianAnswerList;
                     bool problem;
                     if (likeness > 1)
                         problem = true;
@@ -135,7 +155,22 @@ namespace UPServer
                 }
             }
             if (answerlist.Count > 1)
-                answer = MaxValue(answerlist);//most probable prediction
+            {
+                switch(predictionMode)
+                {
+                    case 0://compare
+                        answer = MaxValue(answerlist);//most probable prediction
+                        break;
+                    case 1://mean
+                        answer = MaxValue(meanAnswerList);//most probable prediction
+                        break;
+                    default:
+                    case 2://median
+                        answer = MaxValue(medianAnswerList);//most probable prediction
+                        break;
+
+                }
+            }
             else
                 answer = new KeyValuePair<int, double>(0, 0);
             return answer;

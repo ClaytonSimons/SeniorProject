@@ -49,6 +49,10 @@ namespace UPServer
         private void Closed(object sender, FormClosedEventArgs e)
         {
             proctor.GetConnection().Stop();
+            if(allWnd != null)
+                allWnd.Close();
+            if(activeWnd != null)
+                activeWnd.Close();
         }
     }
 }
